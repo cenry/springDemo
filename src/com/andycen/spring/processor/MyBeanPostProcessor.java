@@ -1,7 +1,5 @@
-package com.andycen.spring.proxy;
+package com.andycen.spring.processor;
 
-import com.andycen.spring.lifecycle.HelloLifeCycle;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 
 /**

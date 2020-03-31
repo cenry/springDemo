@@ -1,4 +1,4 @@
-package com.andycen.spring.proxy;
+package com.andycen.spring.processor;
 
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -9,5 +9,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class ProxyTest {
     public static void main(String[] args) {
         ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("beanPostProcessor.xml");
+        BasicDataSource dataSource = applicationContext.getBean(BasicDataSource.class);
+        System.out.println(dataSource.toString());
     }
 }

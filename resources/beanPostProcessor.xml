@@ -1,15 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-        https://www.springframework.org/schema/beans/spring-beans.xsd"
+        https://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd"
        default-init-method="init" default-destroy-method="destroy">
 
-    <bean id="lifeCycle" class="com.andycen.spring.lifecycle.HelloLifeCycle"/>
+<!--    <bean id="lifeCycle" class="com.andycen.spring.lifecycle.HelloLifeCycle"/>-->
 
-    <bean id="myBeanPostProcessor" class="com.andycen.spring.proxy.MyBeanPostProcessor"/>
+<!--    <bean id="myBeanPostProcessor" class="com.andycen.spring.processor.MyBeanPostProcessor"/>-->
 
-    <bean id="beanWhoInjectProcessor" class="com.andycen.spring.proxy.BeanWhoInjectProcessor">
-        <property name="beanPostProcessor" ref="myBeanPostProcessor"/>
+<!--    <bean id="beanWhoInjectProcessor" class="com.andycen.spring.processor.BeanWhoInjectProcessor">-->
+<!--        <property name="beanPostProcessor" ref="myBeanPostProcessor"/>-->
+<!--    </bean>-->
+    <context:property-placeholder location="classpath:jdbc.properties,classpath:jdbc2.properties"/>
+<!--    <bean class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">-->
+<!--        <property name="locations" value="classpath:jdbc.properties"/>-->
+<!--    </bean>-->
+    <bean id="dataSource" class="com.andycen.spring.processor.BasicDataSource">
+        <property name="driverClassName" value="${jdbc.driverClassName}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
     </bean>
 </beans>
