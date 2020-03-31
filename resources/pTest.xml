@@ -1,0 +1,26 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean name="john-classic" class="com.andycen.spring.CallExample">
+        <property name="user" ref="jane"/>
+    </bean>
+
+    <bean name="john-modern"
+          class="com.andycen.spring.CallExample"
+          p:user-ref="jane"/>
+
+    <bean name="john-classic2" class="com.andycen.spring.CallExample">
+        <property name="userRef" value="jane"/>
+    </bean>
+
+    <bean name="john-modern2"
+          class="com.andycen.spring.CallExample"
+          p:ref="jane"/>
+
+    <bean name="jane" class="com.andycen.spring.User">
+        <property name="name" value="Jane Doe"/>
+    </bean>
+</beans>

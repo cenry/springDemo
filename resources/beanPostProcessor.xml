@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd"
+       default-init-method="init" default-destroy-method="destroy">
+
+    <bean id="lifeCycle" class="com.andycen.spring.lifecycle.HelloLifeCycle"/>
+
+    <bean id="myBeanPostProcessor" class="com.andycen.spring.proxy.MyBeanPostProcessor"/>
+
+    <bean id="beanWhoInjectProcessor" class="com.andycen.spring.proxy.BeanWhoInjectProcessor">
+        <property name="beanPostProcessor" ref="myBeanPostProcessor"/>
+    </bean>
+</beans>

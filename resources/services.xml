@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="register" class="com.andycen.spring.Register">
+        <property name="user" ref="user"/>
+    </bean>
+
+    <bean id="user" class="com.andycen.spring.User"/>
+
+    <bean id="userFactory" class="com.andycen.spring.UserFactory"/>
+
+    <bean id="userByDynamicFactory" factory-bean="userFactory" factory-method="createUser">
+        <constructor-arg value="Andy"/>
+    </bean>
+
+    <bean id="callExample" class="com.andycen.spring.CallExample">
+        <property name="user">
+            <ref parent="parentUser"/>
+        </property>
+    </bean>
+
+    <bean id="accountService" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="target">
+            <ref parent="accountService"/> <!-- notice how we refer to the parent bean -->
+        </property>
+        <!-- insert other configuration and dependencies as required here -->
+    </bean>
+
+</beans>
